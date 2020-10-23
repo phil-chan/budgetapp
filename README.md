@@ -7,7 +7,8 @@
 - Enter in your expenditure: item/service name, cost, date, category
 - Click on category buttons on home page to filter for costs
 
-### MVP Features
+### Features
+#### MVP
 * I want to register under a name
 * I want to add an expense
 * I want to edit an expense
@@ -15,7 +16,7 @@
 * I want to view a history of my expenses
 * I want to filter my expenses by category
 
-#### Addtional Features
+#### Addtional
 * I want to see a graph in my history for expenses
 * I want to filter on that graph for my expenses by category
 * I want to sort by costs
