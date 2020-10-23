@@ -10,7 +10,9 @@ exports.seed = function (knex) {
         [
           {
             id: 1,
-            username: "admin",
+            username: "adminPhil",
+            first_name: "Phil",
+            last_name: "Chan",
             password: "password",
           },
         ].map((user) => {
