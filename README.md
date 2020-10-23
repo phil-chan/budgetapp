@@ -1,3 +1,12 @@
+# budget app
+
+### What it does
+- It lets you record your spending and gives you a summary based on category of spending
+
+### How to use it
+- Enter in your expenditure: item/service name, cost, date, category
+- Click on category buttons on home page to filter for costs
+
 # Full Stack Boilerplate
 
 ## The Tech
