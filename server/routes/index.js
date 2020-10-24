@@ -7,28 +7,25 @@ router.get("/user/:id", (req, res) => {
   usersDb.getUserById(req.params.id).then((user) => res.json(user));
 });
 
-router.get("/", (req, res) => {
-    expensesDb.getExpenses(1).then((expenses) => res.json(expenses));
-  });
-
-// router.get("/:id", (req, res) => {
-//   expensesDb.getExpenses(req.params.id).then((expenses) => res.json(expenses));
-// });
+//need another user to test id
+router.get("/:userId", (req, res) => {
+  // console.log(req.body)
+  expensesDb.getExpenses(req.params.userId).then((expenses) => res.json(expenses));
+  // expensesDb.getExpenses(req.body).then((expenses) => res.json(expenses));
+});
 
 router.post("/", (req, res) => {
   expensesDb.addExpense(req.body).then((expense) => res.json(expense));
 });
 
-router.patch("/expense/:id", (req, res) => {
+router.patch("/update/:id", (req, res) => {
   expensesDb
     .updateExpense(req.params.id, req.body)
     .then((expense) => res.json(expense));
 });
 
-router.delete("/expense/:id", (req, res) => {
-  const id = Number(req.params.id);
-  console.log(id);
-  expensesDb.deleteExpense(id).then((expense) => res.json(expense));
+router.delete("/delete/:id", (req, res) => {
+  expensesDb.deleteExpense(Number(req.params.id)).then((expense) => res.json(expense));
 });
 
 module.exports = router;
