@@ -12,7 +12,7 @@ import { checkAuth } from "../actions/auth";
 
 export class App extends React.Component {
   componentDidMount() {
-    const confirmSuccess = () => {};
+    const confirmSuccess = () => { };
     this.props.dispatch(checkAuth(confirmSuccess));
   }
 
@@ -21,23 +21,23 @@ export class App extends React.Component {
     return (
       <Router>
         <div className="container has-text-centered">
-          <div className="hero is-small is-primary">
+          <div className="hero is-small is-link">
             <div className="hero-body has-text-centered">
               <div className="">
                 {!auth.isAuthenticated ? (
                   <Link to="/">
-                    <h1 className="title is-1">Budget App</h1>
+                    <h1 className="title is-2">Budget App</h1>
                   </Link>
                 ) : (
-                  <>
-                    <Link to="/budgetapp">
-                      <h1 className="title is-1 column">Budget App</h1>
-                    </Link>
-                    <h1>
-                      Welcome {auth.user.first_name} {auth.user.last_name}
-                    </h1>
-                  </>
-                )}
+                    <>
+                      <Link to="/budgetapp">
+                        <h1 className="title is-2 column">Budget App</h1>
+                      </Link>
+                      <h1>
+                        Welcome {auth.user.first_name} {auth.user.last_name}
+                      </h1>
+                    </>
+                  )}
                 <Route path="/" component={Nav} />
               </div>
             </div>
@@ -49,14 +49,15 @@ export class App extends React.Component {
                 <Route exact path="/" component={Login} />
               </>
             ) : (
-              <>
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/register" component={Register} />
-                <Route exact path="/add" component={Add} />
-                <Route exact path="/budgetapp" component={BudgetApp} />
-                <Route exact path="/edit" component={Edit} />
-              </>
-            )}
+                <>
+                  <Route exact path="/" component={BudgetApp} />
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/register" component={Register} />
+                  <Route exact path="/add" component={Add} />
+                  <Route exact path="/budgetapp" component={BudgetApp} />
+                  <Route exact path="/edit" component={Edit} />
+                </>
+              )}
           </div>
         </div>
       </Router>

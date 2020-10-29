@@ -9,8 +9,6 @@ class Add extends React.Component {
     return (
       <>
         <h1>Add</h1>
-        <Link to='/add'>Add</Link>
-        <Link to='/edit'>Edit</Link>
       </>
     );
   }
