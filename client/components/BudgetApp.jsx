@@ -17,8 +17,7 @@ class BudgetApp extends React.Component {
   render() {
     return (
       <>
-        <h1>BudgetApp</h1>
-        <table className="table">
+        <table className="table is-fullwidth is-hoverable">
           <thead>
             <th>Date</th>
             <th>Expense Name</th>
