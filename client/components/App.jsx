@@ -23,7 +23,6 @@ export class App extends React.Component {
         <div className="container has-text-centered">
           <div className="hero is-small is-link">
             <div className="hero-body has-text-centered">
-              <div className="">
                 {!auth.isAuthenticated ? (
                   <Link to="/">
                     <h1 className="title is-2">Budget App</h1>
@@ -39,7 +38,6 @@ export class App extends React.Component {
                     </>
                   )}
                 <Route path="/" component={Nav} />
-              </div>
             </div>
           </div>
 

@@ -9,7 +9,6 @@ router.get("/user/:id", (req, res) => {
 
 //need another user to test id
 router.get("/:userId", (req, res) => {
-  // console.log(req.body)
   expensesDb.getExpenses(req.params.userId).then((expenses) => res.json(expenses));
   // expensesDb.getExpenses(req.body).then((expenses) => res.json(expenses));
 });
