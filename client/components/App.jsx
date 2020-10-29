@@ -24,7 +24,7 @@ export class App extends React.Component {
           <div className="hero is-small is-primary">
             <div className="hero-body has-text-centered">
               <Link to="/" className="">
-                <h1 className="title is-1">Greetings!</h1>
+                <h1 className="title is-1">Budget App</h1>
               </Link>
               <Route path="/" component={Nav} />
             </div>
@@ -42,7 +42,6 @@ export class App extends React.Component {
                 <Route exact path="/add" component={Add} />
                 <Route exact path="/budgetapp" component={BudgetApp} />
                 <Route exact path="/edit" component={Edit} />
-                <Link to="/budgetapp">BudgetApp</Link>
               </>
             )}
           </div>
