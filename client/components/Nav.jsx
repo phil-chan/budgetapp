@@ -31,11 +31,11 @@ class Nav extends React.Component {
             { auth.isAuthenticated
               ? 
               <>
-                    
                   <Link to="/budgetapp" className="navbar-item is-large">My Spendings</Link>
                   <Link to="/add" className="navbar-item is-large">Add</Link>
                   <Link to="/edit" className="navbar-item is-large">Edit</Link>
                   <Link to='/' className="navbar-item is-large" onClick={() => logout()}>Logout</Link>
+                <h1 className="navbar-item">Welcome {auth.user.first_name} {auth.user.last_name}</h1>
                 </>
               : (
                 <>
