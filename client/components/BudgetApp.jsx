@@ -8,7 +8,7 @@ class BudgetApp extends React.Component {
   render() {
     return (
       <>
-        <h1>BudgetApp View</h1>
+        <h1>BudgetApp</h1>
         <Link to='/add'>Add</Link>
         <Link to='/edit'>Edit</Link>
       </>
