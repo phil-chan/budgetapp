@@ -23,10 +23,23 @@ export class App extends React.Component {
         <div className="container has-text-centered">
           <div className="hero is-small is-primary">
             <div className="hero-body has-text-centered">
-              <Link to="/" className="">
-                <h1 className="title is-1">Budget App</h1>
-              </Link>
-              <Route path="/" component={Nav} />
+              <div className="">
+                {!auth.isAuthenticated ? (
+                  <Link to="/">
+                    <h1 className="title is-1">Budget App</h1>
+                  </Link>
+                ) : (
+                  <>
+                    <Link to="/budgetapp">
+                      <h1 className="title is-1 column">Budget App</h1>
+                    </Link>
+                    <h1>
+                      Welcome {auth.user.first_name} {auth.user.last_name}
+                    </h1>
+                  </>
+                )}
+                <Route path="/" component={Nav} />
+              </div>
             </div>
           </div>
 
