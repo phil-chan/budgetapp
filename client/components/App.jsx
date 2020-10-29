@@ -19,10 +19,11 @@ export class App extends React.Component {
   render() {
     const { auth } = this.props;
     return (
-      <Router>
-        <div className="container has-text-centered">
-          <div className="hero is-small is-link">
-            <div className="hero-body has-text-centered">
+      <>
+        <Router>
+          <div className="container">
+            <div className="hero is-small is-link">
+              <div className="hero-body">
                 {!auth.isAuthenticated ? (
                   <Link to="/">
                     <h1 className="title is-2">Budget App</h1>
@@ -30,35 +31,35 @@ export class App extends React.Component {
                 ) : (
                     <>
                       <Link to="/budgetapp">
-                        <h1 className="title is-2 column">Budget App</h1>
+                        <h1 className="title is-2">Budget App</h1>
                       </Link>
-                      <h1>
-                        Welcome {auth.user.first_name} {auth.user.last_name}
-                      </h1>
                     </>
                   )}
                 <Route path="/" component={Nav} />
+              </div>
             </div>
+
+            <>
+              {!auth.isAuthenticated ? (
+                <>
+                  <Route exact path="/" component={Login} />
+                </>
+              ) : (
+                  <>
+                    <Route exact path="/" component={BudgetApp} />
+                    <Route exact path="/login" component={Login} />
+                    <Route exact path="/register" component={Register} />
+                    <Route exact path="/add" component={Add} />
+                    <Route exact path="/budgetapp" component={BudgetApp} />
+                    <Route exact path="/edit" component={Edit} />
+                  </>
+                )}
+            </>
+
           </div>
 
-          <div className="">
-            {!auth.isAuthenticated ? (
-              <>
-                <Route exact path="/" component={Login} />
-              </>
-            ) : (
-                <>
-                  <Route exact path="/" component={BudgetApp} />
-                  <Route exact path="/login" component={Login} />
-                  <Route exact path="/register" component={Register} />
-                  <Route exact path="/add" component={Add} />
-                  <Route exact path="/budgetapp" component={BudgetApp} />
-                  <Route exact path="/edit" component={Edit} />
-                </>
-              )}
-          </div>
-        </div>
-      </Router>
+        </Router>
+      </>
     );
   }
 }

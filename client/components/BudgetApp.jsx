@@ -18,7 +18,7 @@ class BudgetApp extends React.Component {
     return (
       <>
         <h1>BudgetApp</h1>
-        <table class="table">
+        <table className="table">
           <thead>
             <th>Date</th>
             <th>Expense Name</th>
