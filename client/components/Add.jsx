@@ -16,7 +16,6 @@ class Add extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state)
     apiAddExpense(this.state)
   }
 
