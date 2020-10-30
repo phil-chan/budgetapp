@@ -1,5 +1,4 @@
 import request from 'superagent'
-import expenses from '../../server/db/expenses'
 
 // //get user by id MAY NOT NEED THIS SINCE USERINFO IS IN GLOBAL STATE
 // export function apiGetUserById(userId) {
@@ -19,6 +18,7 @@ export function apiGetExpenses(userId) {
 
 //add an expense
 export function apiAddExpense(expense) {
+  console.log(expense)
   return request.post("api/v1/")
     .send(expense)
     .then(res => {
