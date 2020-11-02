@@ -39,7 +39,8 @@ class Add extends React.Component {
             <div className="control">
               <input
                 required
-                className="input is"
+                maxlength="50"
+                className="input"
                 placeholder="i.e. McDonald's Cheese Burger"
                 value={this.state.expense_name}
                 name="expense_name"
@@ -71,7 +72,8 @@ class Add extends React.Component {
             <div className="control">
               <textarea
                 required
-                className="textarea"
+                maxlength="75"
+                className="input"
                 placeholder="i.e. Lunch with friends"
                 value={this.state.expense_description}
                 name="expense_description"
