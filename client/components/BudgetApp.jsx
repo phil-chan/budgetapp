@@ -49,7 +49,13 @@ class BudgetApp extends React.Component {
           </thead>
           <tfoot>
             <tr>
-              <th>Footer</th>
+              <th>Totals</th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th>$0.00</th>
+              <th></th>
+              <th></th>
             </tr>
           </tfoot>
 
