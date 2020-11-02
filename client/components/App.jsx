@@ -21,7 +21,7 @@ export class App extends React.Component {
     return (
       <>
         <Router>
-          <div className="container is-fullwidth">
+          <div className="container">
             <div className="hero is-small is-link">
               <div className="hero-body">
                 {!auth.isAuthenticated ? (
