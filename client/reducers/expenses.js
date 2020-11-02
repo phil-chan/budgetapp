@@ -19,6 +19,14 @@ const reducer = (state = initialState, action) => {
         ...state,
         editing: action.editingStatus,
       };
+    case "DELETE_EXPENSE":
+      let updatedExpenseList = state.allExpenses.filter(
+        (expense) => expense.id !== action.expenseId
+      );
+      return {
+        ...state,
+        allExpenses: updatedExpenseList,
+      };
     default:
       return state;
   }

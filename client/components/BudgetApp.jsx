@@ -1,7 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { apiGetExpenses } from "../apis/index";
-import { getExpenses, getExpenseToEdit, toggleEdit } from "../actions/expenses";
+import { apiGetExpenses, apiDelExpense } from "../apis/index";
+import {
+  getExpenses,
+  getExpenseToEdit,
+  toggleEdit,
+  deleteExpense,
+} from "../actions/expenses";
 
 class BudgetApp extends React.Component {
   state = {};
@@ -19,6 +24,12 @@ class BudgetApp extends React.Component {
     this.props.dispatch(getExpenseToEdit(expenseData));
     this.props.dispatch(toggleEdit(true));
     this.props.history.push("/add");
+  };
+
+  delExpense = (expenseId) => {
+    apiDelExpense(expenseId).then(() => {
+      this.props.dispatch(deleteExpense(expenseId));
+    });
   };
 
   render() {
@@ -63,7 +74,7 @@ class BudgetApp extends React.Component {
                     <i
                       className="fas fa-trash-alt"
                       onClick={() => {
-                        console.log('delete')
+                        this.delExpense(expense.id);
                       }}
                     ></i>
                   </td>

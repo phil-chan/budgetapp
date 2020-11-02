@@ -18,7 +18,6 @@ export function apiGetExpenses(userId) {
 
 //add an expense
 export function apiAddExpense(expense) {
-  console.log(expense)
   return request.post("api/v1/")
     .send(expense)
     .then(res => {
@@ -26,6 +25,13 @@ export function apiAddExpense(expense) {
     })
 }
 
+//delete an expense
+export function apiDelExpense(expenseId) {
+    return request.delete("api/v1/delete/" + expenseId)
+      .then(res => {
+        return res.body
+      })
+  }
+
 //get update an expense
 //update an expense
-//delete an expense

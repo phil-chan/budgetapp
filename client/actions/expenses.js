@@ -18,3 +18,10 @@ export function toggleEdit(editingStatus){
         editingStatus
     }
 }
+
+export function deleteExpense(expenseId){
+    return{
+        type: "DELETE_EXPENSE",
+        expenseId
+    }
+}
