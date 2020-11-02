@@ -1,10 +1,17 @@
-const reducer = (state = [], action) => {
+let initialState = {
+  allExpenses: [],
+  currentExpense: {},
+};
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "RECEIVE_EXPENSES":
-      return action.expenses;
+      return { ...state, allExpenses: action.expenses };
+    case "RECIEVE_EXPENSE_TO_EDIT":
+      return { ...state, currentExpense: action.expenseData };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default reducer
+export default reducer;
