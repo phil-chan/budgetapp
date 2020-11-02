@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { apiAddExpense } from "../apis/index";
 import { toggleEdit } from "../actions/expenses";
 
-
 class Add extends React.Component {
   state = {
     date: Date.now(),
@@ -15,8 +14,8 @@ class Add extends React.Component {
   };
 
   componentDidMount() {
-    // this.props.expenses.editing === true &&
-    //   this.props.dispatch(toggleEdit(false));
+    this.props.expenses.currentExpense === "" &&
+      this.props.dispatch(toggleEdit(false));
   }
 
   handleSubmit = (e) => {

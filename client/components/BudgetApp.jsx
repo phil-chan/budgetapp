@@ -32,7 +32,8 @@ class BudgetApp extends React.Component {
               <th>Description</th>
               <th>Category</th>
               <th>Cost</th>
-              <th>Edit</th>
+              <th className="has-text-centered">Edit</th>
+              <th className="has-text-centered">Delete</th>
             </tr>
           </thead>
           <tfoot>
@@ -50,11 +51,19 @@ class BudgetApp extends React.Component {
                   <td>{expense.expense_description}</td>
                   <td>{expense.category}</td>
                   <td>{expense.cost}</td>
-                  <td>
+                  <td className="has-text-centered">
                     <i
                       className="fas fa-edit"
                       onClick={() => {
                         this.editExpense(expense);
+                      }}
+                    ></i>
+                  </td>
+                  <td className="has-text-centered">
+                    <i
+                      className="fas fa-trash-alt"
+                      onClick={() => {
+                        console.log('delete')
                       }}
                     ></i>
                   </td>
