@@ -43,6 +43,8 @@ export class App extends React.Component {
               {!auth.isAuthenticated ? (
                 <>
                   <Route exact path="/" component={Login} />
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/register" component={Register} />
                 </>
               ) : (
                   <>

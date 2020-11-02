@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { HashRouter as Router, Route, Link } from "react-router-dom";
-
 import { apiAddExpense } from "../apis/index";
+import { toggleEdit } from "../actions/expenses";
+
 
 class Add extends React.Component {
   state = {
@@ -13,6 +13,11 @@ class Add extends React.Component {
     cost: 0,
     user_id: this.props.auth.user.id,
   };
+
+  componentDidMount() {
+    // this.props.expenses.editing === true &&
+    //   this.props.dispatch(toggleEdit(false));
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -101,9 +106,10 @@ class Add extends React.Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, expenses }) => {
   return {
     auth,
+    expenses,
   };
 };
 

@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { apiGetExpenses } from "../apis/index";
-import { getExpenses, getExpenseToEdit } from "../actions/expenses";
+import { getExpenses, getExpenseToEdit, toggleEdit } from "../actions/expenses";
 
 class BudgetApp extends React.Component {
   state = {};
@@ -11,10 +10,15 @@ class BudgetApp extends React.Component {
     apiGetExpenses(this.props.auth.user.id).then((expenses) => {
       this.props.dispatch(getExpenses(expenses));
     });
+
+    this.props.expenses.editing === true &&
+      this.props.dispatch(toggleEdit(false));
   }
 
   editExpense = (expenseData) => {
     this.props.dispatch(getExpenseToEdit(expenseData));
+    this.props.dispatch(toggleEdit(true));
+    this.props.history.push("/add");
   };
 
   render() {

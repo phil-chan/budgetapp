@@ -11,3 +11,10 @@ export function getExpenseToEdit(expenseData) {
     expenseData,
   };
 }
+
+export function toggleEdit(editingStatus){
+    return{
+        type: "TOGGLE_EDIT",
+        editingStatus
+    }
+}
