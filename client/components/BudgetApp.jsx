@@ -33,6 +33,11 @@ class BudgetApp extends React.Component {
   };
 
   render() {
+    let total = this.state.totalExpenditure
+    this.props.expenses.allExpenses.map(expense => {
+      total = total + expense.cost
+      return total
+    })
     return (
       <>
         <table className="table is-hoverable is-fullwidth">
@@ -53,7 +58,7 @@ class BudgetApp extends React.Component {
               <th></th>
               <th></th>
               <th></th>
-              <th>$0.00</th>
+              <th>{Number(total)}</th>
               <th></th>
               <th></th>
             </tr>
