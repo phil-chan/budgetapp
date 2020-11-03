@@ -6,6 +6,7 @@ import {
   getExpenseToEdit,
   toggleEdit,
   deleteExpense,
+  updateTotalCost,
 } from "../actions/expenses";
 
 class BudgetApp extends React.Component {
@@ -14,6 +15,7 @@ class BudgetApp extends React.Component {
   componentDidMount() {
     apiGetExpenses(this.props.auth.user.id).then((expenses) => {
       this.props.dispatch(getExpenses(expenses));
+      this.props.dispatch(updateTotalCost())
     });
 
     this.props.expenses.editing === true &&
@@ -29,6 +31,7 @@ class BudgetApp extends React.Component {
   delExpense = (expenseId) => {
     apiDelExpense(expenseId).then(() => {
       this.props.dispatch(deleteExpense(expenseId));
+      this.props.dispatch(updateTotalCost())
     });
   };
 
@@ -58,7 +61,7 @@ class BudgetApp extends React.Component {
               <th></th>
               <th></th>
               <th></th>
-              <th>{Number(total)}</th>
+              <th>${this.props.expenses.totalExpenditure}</th>
               <th></th>
               <th></th>
             </tr>
@@ -72,7 +75,7 @@ class BudgetApp extends React.Component {
                   <td>{expense.expense_name}</td>
                   <td>{expense.expense_description}</td>
                   <td>{expense.category}</td>
-                  <td>{expense.cost}</td>
+                  <td>${expense.cost}</td>
                   <td className="has-text-centered">
                     <i
                       className="fas fa-edit"

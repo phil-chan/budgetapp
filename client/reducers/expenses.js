@@ -2,6 +2,7 @@ let initialState = {
   allExpenses: [],
   currentExpense: {},
   editing: false,
+  totalExpenditure: 0
 };
 
 const reducer = (state = initialState, action) => {
@@ -20,13 +21,16 @@ const reducer = (state = initialState, action) => {
         editing: action.editingStatus,
       };
     case "DELETE_EXPENSE":
-      let updatedExpenseList = state.allExpenses.filter(
-        (expense) => expense.id !== action.expenseId
-      );
       return {
         ...state,
-        allExpenses: updatedExpenseList,
-      };
+        allExpenses: state.allExpenses.filter(
+          (expense) => expense.id !== action.expenseId
+        )
+      }
+    case "UPDATE_TOTAL_COST":
+      let expenseCosts = state.allExpenses.map(expense => expense.cost)
+      let totalCost = expenseCosts.reduce((total, num) => { return total + num })
+      return { ...state, totalExpenditure: totalCost };
     default:
       return state;
   }

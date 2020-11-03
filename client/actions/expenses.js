@@ -25,3 +25,9 @@ export function deleteExpense(expenseId){
         expenseId
     }
 }
+
+export function updateTotalCost(){
+  return{
+    type: "UPDATE_TOTAL_COST"
+  }
+}
