@@ -5,10 +5,11 @@ export function getExpenses(expenses) {
   };
 }
 
-export function getExpenseToEdit(expenseData) {
+export function getExpenseToEdit(expenseData, status) {
   return {
     type: "RECIEVE_EXPENSE_TO_EDIT",
     expenseData,
+    status
   };
 }
 

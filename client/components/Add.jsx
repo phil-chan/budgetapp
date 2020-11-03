@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { apiAddExpense } from "../apis/index";
-import { toggleEdit } from "../actions/expenses";
+import { getExpenseToEdit, toggleEdit } from "../actions/expenses";
 
 class Add extends React.Component {
   state = {
@@ -14,9 +14,10 @@ class Add extends React.Component {
   };
 
   componentDidMount() {
-    this.props.expenses.currentExpense === ""
-      &&
-      this.props.dispatch(toggleEdit(false));
+    if (this.props.expenses.currentExpense === "") {
+      this.props.dispatch(getExpenseToEdit("", false))
+      // this.props.dispatch(toggleEdit(false));
+    }
   }
 
   handleSubmit = (e) => {

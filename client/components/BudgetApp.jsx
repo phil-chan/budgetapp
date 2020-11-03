@@ -19,7 +19,8 @@ class BudgetApp extends React.Component {
     });
 
     this.props.expenses.editing === true &&
-      this.props.dispatch(toggleEdit(false));
+      // this.props.dispatch(toggleEdit(false));
+      this.props.dispatch(getExpenseToEdit("", false));
   }
 
   editExpense = (expenseData) => {

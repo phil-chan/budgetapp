@@ -13,7 +13,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         currentExpense: action.expenseData,
-        editing: true,
+        editing: action.status,
       };
     case "TOGGLE_EDIT":
       return {
