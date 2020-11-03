@@ -14,8 +14,8 @@ class Add extends React.Component {
   };
 
   componentDidMount() {
-    this.props.expenses.currentExpense === "" 
-    &&
+    this.props.expenses.currentExpense === ""
+      &&
       this.props.dispatch(toggleEdit(false));
   }
 
@@ -89,8 +89,7 @@ class Add extends React.Component {
               <input
                 required
                 className="input"
-                // value={`$${Number.parseFloat(this.state.cost).toFixed(2)}`}
-                value={this.state.cost}
+                value={Number(this.state.cost)}
                 name="cost"
                 type="number"
                 pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$"
