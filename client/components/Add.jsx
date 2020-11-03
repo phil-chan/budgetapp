@@ -17,6 +17,8 @@ class Add extends React.Component {
     if (this.props.expenses.currentExpense === "") {
       this.props.dispatch(getExpenseToEdit("", false))
       // this.props.dispatch(toggleEdit(false));
+    } else {
+      this.setState(this.props.expenses.currentExpense)
     }
   }
 
