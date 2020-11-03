@@ -27,11 +27,16 @@ export function apiAddExpense(expense) {
 
 //delete an expense
 export function apiDelExpense(expenseId) {
-    return request.delete("api/v1/delete/" + expenseId)
-      .then(res => {
-        return res.body
-      })
-  }
+  return request.delete("api/v1/delete/" + expenseId)
+    .then(res => {
+      return res.body
+    })
+}
 
 //get update an expense
 //update an expense
+export function apiEditExpense(expense) {
+  return request.patch("api/v1/update/" + expense.id)
+  .send(expense)
+  .then(res => res.body)
+}

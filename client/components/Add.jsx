@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { apiAddExpense } from "../apis/index";
+import { apiAddExpense, apiEditExpense } from "../apis/index";
 import { getExpenseToEdit, toggleEdit } from "../actions/expenses";
 
 class Add extends React.Component {
@@ -24,7 +24,11 @@ class Add extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    apiAddExpense(this.state);
+    if(this.props.expenses.editing){
+      apiEditExpense(this.state)
+    }else{
+      apiAddExpense(this.state);
+    }
     this.props.history.push("/budgetapp");
   };
 
@@ -43,7 +47,7 @@ class Add extends React.Component {
             <div className="control">
               <input
                 required
-                maxlength="50"
+                maxLength="50"
                 className="input"
                 placeholder="i.e. McDonald's Cheese Burger"
                 value={this.state.expense_name}
@@ -56,7 +60,7 @@ class Add extends React.Component {
           <div className="field">
             <label className="label">Category</label>
             <div className="control">
-              <div class="select is-info">
+              <div className="select is-info">
                 <select required name="category" onChange={this.handleChange}>
                   <option></option>
                   <option value="Entertainment">Entertainment</option>
@@ -76,7 +80,7 @@ class Add extends React.Component {
             <div className="control">
               <textarea
                 required
-                maxlength="75"
+                maxLength="75"
                 className="input"
                 placeholder="i.e. Lunch with friends"
                 value={this.state.expense_description}

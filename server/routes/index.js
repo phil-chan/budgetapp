@@ -20,7 +20,7 @@ router.post("/", (req, res) => {
 
 router.patch("/update/:id", (req, res) => {
   expensesDb
-    .updateExpense(req.params.id, req.body)
+    .updateExpense(req.params.id, req.body) //is it req.body that takes expnesedata?
     .then((expense) => res.json(expense));
 });
 
