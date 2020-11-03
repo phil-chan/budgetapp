@@ -31,7 +31,13 @@ class Nav extends React.Component {
               className={`navbar-burger burger ${showBurger ? "is-active" : ""
                 }`}
               data-target="navbarMenuHeroA"
-            ></span>
+            >
+              {/* THESE THREE SPANS ARE FOR HAMBURGER BAR LINES */}
+              <span></span>
+              <span></span>
+              <span></span>
+              {/* THESE THREE SPANS ARE FOR HAMBURGER BAR LINES */}
+            </span>
           </div>
           <div
             id="navbarMenuHeroA"
