@@ -1,6 +1,6 @@
 # budget app
 
-running it locally:
+#### running it locally:
 1. npm run dev
 2. http://localhost:3000/
 3. register as a user (via the nav bar)
