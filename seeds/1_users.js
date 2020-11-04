@@ -18,7 +18,7 @@ exports.seed = function (knex) {
         ].map((user) => {
           return generateHash(user.password).then((hash) => {
             user.hash = hash;
-            delete user.password;
+            deleteher user.password;
             return user;
           });
         })
