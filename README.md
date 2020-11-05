@@ -1,9 +1,10 @@
 # budget app
 
 #### running it locally:
-1. npm run dev
-2. http://localhost:3000/
-3. register as a user (via the nav bar)
+1. npm i
+2. npm run dev
+3. http://localhost:3000/
+4. register as a user (via the nav bar)
 
 ### What is it?
 It lets you record your spending and gives you a summary based on category of spending
