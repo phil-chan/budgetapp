@@ -15,7 +15,7 @@ class BudgetApp extends React.Component {
   componentDidMount() {
     apiGetExpenses(this.props.auth.user.id).then((expenses) => {
       this.props.dispatch(getExpenses(expenses));
-      this.props.dispatch(updateTotalCost())
+      this.props.dispatch(updateTotalCost());
     });
 
     this.props.expenses.editing === true &&
@@ -32,16 +32,16 @@ class BudgetApp extends React.Component {
   delExpense = (expenseId) => {
     apiDelExpense(expenseId).then(() => {
       this.props.dispatch(deleteExpense(expenseId));
-      this.props.dispatch(updateTotalCost())
+      this.props.dispatch(updateTotalCost());
     });
   };
 
   render() {
-    let total = this.state.totalExpenditure
-    this.props.expenses.allExpenses.map(expense => {
-      total = total + expense.cost
-      return total
-    })
+    let total = this.state.totalExpenditure;
+    this.props.expenses.allExpenses.map((expense) => {
+      total = total + expense.cost;
+      return total;
+    });
     return (
       <>
         <table className="table is-hoverable is-fullwidth">
@@ -62,7 +62,9 @@ class BudgetApp extends React.Component {
               <th></th>
               <th></th>
               <th></th>
-              <th>${this.props.expenses.totalExpenditure}</th>
+              <th>
+                ${Number(this.props.expenses.totalExpenditure).toFixed(2)}
+              </th>
               <th></th>
               <th></th>
             </tr>
@@ -76,8 +78,8 @@ class BudgetApp extends React.Component {
                   <td>{expense.expense_name}</td>
                   <td>{expense.expense_description}</td>
                   <td>{expense.category}</td>
-                  <td>${expense.cost}</td>
-                  <td className="has-text-centered">
+                  <td>${Number(expense.cost).toFixed(2)}</td>
+                  <td className="has-text-centered" id="edit-icon">
                     <i
                       className="fas fa-edit"
                       onClick={() => {
@@ -85,7 +87,7 @@ class BudgetApp extends React.Component {
                       }}
                     ></i>
                   </td>
-                  <td className="has-text-centered">
+                  <td className="has-text-centered" id="trash-icon">
                     <i
                       className="fas fa-trash-alt"
                       onClick={() => {
