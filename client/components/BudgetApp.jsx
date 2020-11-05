@@ -43,8 +43,8 @@ class BudgetApp extends React.Component {
       return total;
     });
     return (
-      <>
-        <table className="table is-hoverable is-fullwidth">
+      <div className="table-container">
+        <table className="table is-narrow is-hoverable is-fullwidth">
           <thead>
             <tr>
               <th>Date</th>
@@ -79,28 +79,33 @@ class BudgetApp extends React.Component {
                   <td>{expense.expense_description}</td>
                   <td>{expense.category}</td>
                   <td>${Number(expense.cost).toFixed(2)}</td>
-                  <td className="has-text-centered" id="edit-icon">
-                    <i
-                      className="fas fa-edit"
-                      onClick={() => {
-                        this.editExpense(expense);
-                      }}
-                    ></i>
+
+                  <td
+                    className="has-text-centered is-vcentered"
+                    id="edit-icon"
+                    onClick={() => {
+                      this.editExpense(expense);
+                    }}
+                  >
+                    <i className="fas fa-edit"></i>
                   </td>
-                  <td className="has-text-centered" id="trash-icon">
-                    <i
-                      className="fas fa-trash-alt"
-                      onClick={() => {
-                        this.delExpense(expense.id);
-                      }}
-                    ></i>
+
+                  <td
+                    className="has-text-centered is-vcentered" 
+                    id="trash-icon"
+                    onClick={() => {
+                      this.delExpense(expense.id);
+                    }}
+                  >
+                    <i className="fas fa-trash-alt"></i>
                   </td>
+
                 </tr>
               </tbody>
             );
           })}
         </table>
-      </>
+      </div>
     );
   }
 }
