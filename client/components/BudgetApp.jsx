@@ -66,7 +66,7 @@ class BudgetApp extends React.Component {
                         required
                         name="category"
                         onChange={this.handleChange}
-                        className="has-text-weight-semibold"
+                        className="has-text-weight-bold"
                       >
                         <option value="Category">Category</option>
                         <option value="Entertainment">Entertainment</option>
