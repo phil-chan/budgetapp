@@ -10,7 +10,9 @@ import {
 } from "../actions/expenses";
 
 class BudgetApp extends React.Component {
-  state = {};
+  state = {
+    category: "",
+  };
 
   componentDidMount() {
     apiGetExpenses(this.props.auth.user.id).then((expenses) => {
@@ -36,6 +38,12 @@ class BudgetApp extends React.Component {
     });
   };
 
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
   render() {
     let total = this.state.totalExpenditure;
     this.props.expenses.allExpenses.map((expense) => {
@@ -50,7 +58,28 @@ class BudgetApp extends React.Component {
               <th>Date</th>
               <th>Expense Name</th>
               <th>Description</th>
-              <th>Category</th>
+              <th>
+                <div className="field">
+                  <div className="control">
+                    <div className="select is-info">
+                      <select
+                        required
+                        name="category"
+                        onChange={this.handleChange}
+                      >
+                        <option>Filter Category</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Food">Food</option>
+                        <option value="Charity">Charity</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Work">Work</option>
+                        <option value="Subscriptions">Subscriptions</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </th>
               <th>Cost</th>
               <th className="has-text-centered">Edit</th>
               <th className="has-text-centered">Delete</th>
@@ -91,7 +120,7 @@ class BudgetApp extends React.Component {
                   </td>
 
                   <td
-                    className="has-text-centered is-vcentered" 
+                    className="has-text-centered is-vcentered"
                     id="trash-icon"
                     onClick={() => {
                       this.delExpense(expense.id);
@@ -99,7 +128,6 @@ class BudgetApp extends React.Component {
                   >
                     <i className="fas fa-trash-alt"></i>
                   </td>
-
                 </tr>
               </tbody>
             );
