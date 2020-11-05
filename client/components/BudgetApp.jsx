@@ -7,12 +7,11 @@ import {
   toggleEdit,
   deleteExpense,
   updateTotalCost,
+  updateCurrentCategory,
 } from "../actions/expenses";
 
 class BudgetApp extends React.Component {
-  state = {
-    category: "",
-  };
+  state = {};
 
   componentDidMount() {
     apiGetExpenses(this.props.auth.user.id).then((expenses) => {
@@ -21,7 +20,6 @@ class BudgetApp extends React.Component {
     });
 
     this.props.expenses.editing === true &&
-      // this.props.dispatch(toggleEdit(false));
       this.props.dispatch(getExpenseToEdit("", false));
   }
 
@@ -39,17 +37,11 @@ class BudgetApp extends React.Component {
   };
 
   handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
+    this.props.dispatch(updateCurrentCategory(e.target.value));
+    this.props.dispatch(updateTotalCost());
   };
 
   render() {
-    let total = this.state.totalExpenditure;
-    this.props.expenses.allExpenses.map((expense) => {
-      total = total + expense.cost;
-      return total;
-    });
     return (
       <div className="table-container">
         <table className="table is-narrow is-hoverable is-fullwidth">
@@ -100,7 +92,7 @@ class BudgetApp extends React.Component {
             </tr>
           </tfoot>
 
-          {this.props.expenses.allExpenses.map((expense, idx) => {
+          {this.props.expenses.filteredExpenses.map((expense, idx) => {
             return (
               <tbody key={idx}>
                 <tr>
