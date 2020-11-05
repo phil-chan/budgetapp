@@ -55,10 +55,10 @@ class BudgetApp extends React.Component {
         <table className="table is-narrow is-hoverable is-fullwidth">
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Expense Name</th>
-              <th>Description</th>
-              <th>
+              <th className="is-vcentered">Date</th>
+              <th className="is-vcentered">Expense Name</th>
+              <th className="is-vcentered">Description</th>
+              <th className="is-vcentered">
                 <div className="field">
                   <div className="control">
                     <div className="select is-info">
@@ -66,8 +66,9 @@ class BudgetApp extends React.Component {
                         required
                         name="category"
                         onChange={this.handleChange}
+                        className="has-text-weight-semibold"
                       >
-                        <option>Filter Category</option>
+                        <option value="Category">Category</option>
                         <option value="Entertainment">Entertainment</option>
                         <option value="Food">Food</option>
                         <option value="Charity">Charity</option>
@@ -80,9 +81,9 @@ class BudgetApp extends React.Component {
                   </div>
                 </div>
               </th>
-              <th>Cost</th>
-              <th className="has-text-centered">Edit</th>
-              <th className="has-text-centered">Delete</th>
+              <th className="is-vcentered">Cost</th>
+              <th className="has-text-centered is-vcentered">Edit</th>
+              <th className="has-text-centered is-vcentered">Delete</th>
             </tr>
           </thead>
           <tfoot>
