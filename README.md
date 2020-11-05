@@ -6,7 +6,7 @@
 3. http://localhost:3000/
 4. register as a user (via the nav bar)
 
-### heroku:
+#### heroku:
 - http://the-budgetapp.herokuapp.com/ (not currently working after login page)
 
 ### What is it?
