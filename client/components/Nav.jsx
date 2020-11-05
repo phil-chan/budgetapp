@@ -50,7 +50,7 @@ class Nav extends React.Component {
                     My Spendings
                   </Link>
                   <Link to="/add" className="navbar-item is-large">
-                    Add New Expenditure
+                    Add New Expense
                   </Link>
                   <Link
                     to="/"

@@ -48,7 +48,7 @@ class BudgetApp extends React.Component {
           <thead>
             <tr>
               <th className="is-vcentered">Date</th>
-              <th className="is-vcentered">Expense Name</th>
+              <th className="is-vcentered">Expense</th>
               <th className="is-vcentered">Description</th>
               <th className="is-vcentered">
                 <div className="field">
