@@ -27,31 +27,33 @@ const reducer = (state = initialState, action) => {
         editing: action.editingStatus,
       };
     case "DELETE_EXPENSE":
+      //two filters.. maybe I don't need all expenese at all?
       return {
         ...state,
         allExpenses: state.allExpenses.filter(
           (expense) => expense.id !== action.expenseId
         ),
+        filteredExpenses: state.filteredExpenses.filter(
+          (expense) => expense.id !== action.expenseId
+        ),
       };
     case "UPDATE_TOTAL_COST":
-      console.log("updating total cost");
       let expenseCosts = state.filteredExpenses.map((expense) => expense.cost);
       let totalCost = expenseCosts.reduce((total, num) => {
         return total + num;
-      });
+      }, []);
       return { ...state, totalExpenditure: totalCost };
     case "UPDATE_CURRENT_CATEGORY":
-      if (action.category === "Category")
-        return {
-          ...state,
-          filteredExpenses: state.allExpenses,
-        };
+      let result = [];
+      result = state.allExpenses.filter(
+        (expense) => expense.category === action.category
+      );
+
+      if (action.category === "Category") result = state.allExpenses;
 
       return {
         ...state,
-        filteredExpenses: state.allExpenses.filter(
-          (expense) => expense.category === action.category
-        ),
+        filteredExpenses: result,
       };
     default:
       return state;

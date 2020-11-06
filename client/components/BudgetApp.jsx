@@ -52,7 +52,11 @@ class BudgetApp extends React.Component {
   render() {
     return (
       <>
-        <Table className="table" id="table">
+        <Table
+          className="table"
+          id="table"
+          sortable={[{ column: "expense", direction: "asc" }]}
+        >
           <Thead>
             <Th column="date">
               <strong className="date-header">Date</strong>
@@ -64,7 +68,25 @@ class BudgetApp extends React.Component {
               <strong className="description-header">Description</strong>
             </Th>
             <Th column="category">
-              <strong className="category-header">Category</strong>
+              <strong className="category-header">
+                <div className="select is-info">
+                  <select
+                    required
+                    name="category"
+                    onChange={this.handleChange}
+                    className="has-text-weight-bold"
+                  >
+                    <option value="Category">Category</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Food">Food</option>
+                    <option value="Charity">Charity</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Work">Work</option>
+                    <option value="Subscriptions">Subscriptions</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </strong>
             </Th>
             <Th column="cost">
               <strong className="cost-header">Cost</strong>
@@ -76,109 +98,54 @@ class BudgetApp extends React.Component {
               <strong className="delete-header">Delete</strong>
             </Th>
           </Thead>
-          <Tr>
-            <Td column="date">Something</Td>
-            <Td column="expense">Something</Td>
-            <Td column="description">Something</Td>
-            <Td column="category">Something</Td>
-            <Td column="cost">Something</Td>
-            <Td column="edit">Something</Td>
-            <Td column="delete">Something</Td>
-          </Tr>
+
+          {this.props.expenses.filteredExpenses.map((expense, idx) => {
+            return (
+              <Tr key={idx}>
+                <Th column="date">{new Date(expense.date).toDateString()}</Th>
+                <Td column="expense">{expense.expense_name}</Td>
+                <Td column="description">{expense.expense_description}</Td>
+                <Td column="category">{expense.category}</Td>
+                {/* <Td column="cost">${Number(expense.cost).toFixed(2)}</Td> */}
+                <Td column="cost">{Number(expense.cost).toFixed(2)}</Td>
+                <Td
+                  column="edit"
+                  className="has-text-centered is-vcentered"
+                  id="edit-icon"
+                  onClick={() => {
+                    this.editExpense(expense);
+                  }}
+                >
+                  <i className="fas fa-edit"></i>
+                </Td>
+
+                <Td
+                  column="delete"
+                  className="has-text-centered is-vcentered"
+                  id="trash-icon"
+                  onClick={() => {
+                    this.delExpense(expense.id);
+                  }}
+                >
+                  <i className="fas fa-trash-alt"></i>
+                </Td>
+              </Tr>
+            );
+          })}
           <Tfoot>
-              <Th>Totals:</Th>
-              <Th></Th>
-              <Th></Th>
-              <Th></Th>
-              <Th>
+            <Td>
+              <strong className="totalsLabel-footer">Totals</strong>
+            </Td>
+            <Td></Td>
+            <Td></Td>
+            <Td></Td>
+            <Td>
+              <strong className="totalCosts-footer">
                 ${Number(this.props.expenses.totalExpenditure).toFixed(2)}
-              </Th>
+              </strong>
+            </Td>
           </Tfoot>
         </Table>
-        <div className="table-container">
-          <table className="table is-narrow is-hoverable is-fullwidth">
-            <thead>
-              <tr>
-                <th className="is-vcentered">Date</th>
-                <th className="is-vcentered">Expense</th>
-                <th className="is-vcentered">Description</th>
-                <th className="is-vcentered">
-                  <div className="field">
-                    <div className="control">
-                      <div className="select is-info">
-                        <select
-                          required
-                          name="category"
-                          onChange={this.handleChange}
-                          className="has-text-weight-bold"
-                        >
-                          <option value="Category">Category</option>
-                          <option value="Entertainment">Entertainment</option>
-                          <option value="Food">Food</option>
-                          <option value="Charity">Charity</option>
-                          <option value="Travel">Travel</option>
-                          <option value="Work">Work</option>
-                          <option value="Subscriptions">Subscriptions</option>
-                          <option value="Other">Other</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </th>
-                <th className="is-vcentered">Cost</th>
-                <th className="has-text-centered is-vcentered">Edit</th>
-                <th className="has-text-centered is-vcentered">Delete</th>
-              </tr>
-            </thead>
-            <tfoot>
-              <tr>
-                <th>Totals</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th>
-                  ${Number(this.props.expenses.totalExpenditure).toFixed(2)}
-                </th>
-                <th></th>
-                <th></th>
-              </tr>
-            </tfoot>
-
-            {this.props.expenses.filteredExpenses.map((expense, idx) => {
-              return (
-                <tbody key={idx}>
-                  <tr>
-                    <th>{new Date(expense.date).toDateString()}</th>
-                    <td>{expense.expense_name}</td>
-                    <td>{expense.expense_description}</td>
-                    <td>{expense.category}</td>
-                    <td>${Number(expense.cost).toFixed(2)}</td>
-
-                    <td
-                      className="has-text-centered is-vcentered"
-                      id="edit-icon"
-                      onClick={() => {
-                        this.editExpense(expense);
-                      }}
-                    >
-                      <i className="fas fa-edit"></i>
-                    </td>
-
-                    <td
-                      className="has-text-centered is-vcentered"
-                      id="trash-icon"
-                      onClick={() => {
-                        this.delExpense(expense.id);
-                      }}
-                    >
-                      <i className="fas fa-trash-alt"></i>
-                    </td>
-                  </tr>
-                </tbody>
-              );
-            })}
-          </table>
-        </div>
       </>
     );
   }

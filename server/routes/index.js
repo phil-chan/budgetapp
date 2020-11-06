@@ -14,7 +14,6 @@ router.get("/:userId", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  console.log(req.body)
   expensesDb.addExpense(req.body).then((expense) => res.json(expense));
 });
 
