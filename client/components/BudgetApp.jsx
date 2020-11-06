@@ -106,7 +106,6 @@ class BudgetApp extends React.Component {
                 <Td column="expense">{expense.expense_name}</Td>
                 <Td column="description">{expense.expense_description}</Td>
                 <Td column="category">{expense.category}</Td>
-                {/* <Td column="cost">${Number(expense.cost).toFixed(2)}</Td> */}
                 <Td column="cost">{Number(expense.cost).toFixed(2)}</Td>
                 <Td
                   column="edit"

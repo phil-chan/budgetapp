@@ -41,7 +41,7 @@ const reducer = (state = initialState, action) => {
       let expenseCosts = state.filteredExpenses.map((expense) => expense.cost);
       let totalCost = expenseCosts.reduce((total, num) => {
         return total + num;
-      }, []);
+      }, 0);
       return { ...state, totalExpenditure: totalCost };
     case "UPDATE_CURRENT_CATEGORY":
       let result = [];
