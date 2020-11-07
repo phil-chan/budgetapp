@@ -5,7 +5,7 @@ import { getExpenseToEdit, toggleEdit } from "../actions/expenses";
 
 class Add extends React.Component {
   state = {
-    date: Date.now(),
+    date: new Date(),
     category: "",
     expense_name: "",
     expense_description: "",
