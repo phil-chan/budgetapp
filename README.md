@@ -1,6 +1,6 @@
 # budget app
 
-#### running it locally:
+#### running it locally (use master branch):
 1. npm i
 2. npm run dev
 3. http://localhost:3000/
