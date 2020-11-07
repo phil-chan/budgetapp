@@ -5,7 +5,7 @@ exports.up = function (knex) {
       table.string("expense_description");
       table.string("category");
       table.integer("cost");
-      table.date("date");
+      table.timestamp("date");
       table.integer("user_id").references("users.id");
     });
   };
