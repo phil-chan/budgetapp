@@ -2,7 +2,7 @@ import request from 'superagent'
 
 //get all expenses
 export function apiGetExpenses(userId) {
-  return request.get("api/v1/" + userId)
+  return request.get("/api/v1/" + userId)
     .then((res) => {
       return res.body
     })
@@ -10,7 +10,7 @@ export function apiGetExpenses(userId) {
 
 //add an expense
 export function apiAddExpense(expense) {
-  return request.post("api/v1/")
+  return request.post("/api/v1")
     .send(expense)
     .then(res => {
       return res.body
@@ -19,7 +19,7 @@ export function apiAddExpense(expense) {
 
 //delete an expense
 export function apiDelExpense(expenseId) {
-  return request.delete("api/v1/delete/" + expenseId)
+  return request.delete("/api/v1/delete/" + expenseId)
     .then(res => {
       return res.body
     })
@@ -28,7 +28,7 @@ export function apiDelExpense(expenseId) {
 //get update an expense
 //update an expense
 export function apiEditExpense(expense) {
-  return request.patch("api/v1/update/" + expense.id)
+  return request.patch("/api/v1/update/" + expense.id)
   .send(expense)
   .then(res => res.body)
 }
