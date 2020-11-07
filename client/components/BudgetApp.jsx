@@ -87,10 +87,10 @@ class BudgetApp extends React.Component {
             <Th column="cost" className="is-vcentered">
               <strong className="cost-header">Cost</strong>
             </Th>
-            <Th column="edit" className="is-vcentered">
+            <Th column="edit" className="is-vcentered" id="edit-header">
               <strong className="edit-header">Edit</strong>
             </Th>
-            <Th column="delete" className="is-vcentered">
+            <Th column="delete" className="is-vcentered" id="delete-header">
               <strong className="delete-header">Delete</strong>
             </Th>
           </Thead>

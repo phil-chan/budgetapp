@@ -45,6 +45,11 @@ a.navbar-item.is-active,
   }
 }
 
+#edit-header,
+#delete-header {
+  pointer-events: none;
+}
+
 #table {
   width: 100%;
 }
