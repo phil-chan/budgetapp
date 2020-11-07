@@ -29,6 +29,22 @@ a.navbar-item.is-active,
   background-color: inherit;
 }
 
+.reactable-header-sort-asc {
+  background-color: rgb(240, 240, 240);
+  &:before {
+    content: "▼";
+    float: right;
+  }
+}
+
+.reactable-header-sort-desc {
+  background-color: rgb(240, 240, 240);
+  &:before {
+    content: "▲";
+    float: right;
+  }
+}
+
 #table {
   width: 100%;
 }
@@ -40,12 +56,12 @@ a.navbar-item.is-active,
 
 .reactable-column-header > *:hover {
   cursor: pointer;
-  background-color: rgb(235, 235, 235);
+  font-weight: 900;
+  text-decoration: underline;
 }
 
 .reactable-column-header > *:focus {
   outline: 0;
-  background-color: rgb(230, 230, 230);
 }
 
 #trash-icon {
