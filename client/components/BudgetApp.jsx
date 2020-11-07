@@ -59,7 +59,7 @@ class BudgetApp extends React.Component {
             { column: "expense", direction: "desc" },
             { column: "description", direction: "desc" },
             { column: "date", direction: "Date" },
-            { column: "cost", direction: "Currency" },
+            { column: "cost", sortFunction: Currency(1, 2) },
             { column: "category", direction: "desc" },
           ]}
         >
