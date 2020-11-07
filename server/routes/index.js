@@ -7,10 +7,8 @@ router.get("/user/:id", (req, res) => {
   usersDb.getUserById(req.params.id).then((user) => res.json(user));
 });
 
-//need another user to test id
 router.get("/:userId", (req, res) => {
   expensesDb.getExpenses(req.params.userId).then((expenses) => res.json(expenses));
-  // expensesDb.getExpenses(req.body).then((expenses) => res.json(expenses));
 });
 
 router.post("/", (req, res) => {
@@ -19,7 +17,7 @@ router.post("/", (req, res) => {
 
 router.patch("/update/:id", (req, res) => {
   expensesDb
-    .updateExpense(req.params.id, req.body) //is it req.body that takes expnesedata?
+    .updateExpense(req.params.id, req.body)
     .then((expense) => res.json(expense));
 });
 

@@ -27,7 +27,6 @@ const reducer = (state = initialState, action) => {
         editing: action.editingStatus,
       };
     case "DELETE_EXPENSE":
-      //two filters.. maybe I don't need all expenese at all?
       return {
         ...state,
         allExpenses: state.allExpenses.filter(

@@ -32,11 +32,9 @@ class Nav extends React.Component {
                 }`}
               data-target="navbarMenuHeroA"
             >
-              {/* THESE THREE SPANS ARE FOR HAMBURGER BAR LINES */}
               <span></span>
               <span></span>
               <span></span>
-              {/* THESE THREE SPANS ARE FOR HAMBURGER BAR LINES */}
             </span>
           </div>
           <div
