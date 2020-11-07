@@ -52,7 +52,12 @@ class BudgetApp extends React.Component {
   render() {
     return (
       <div className="table-container">
-        <Table className="table" id="table" sortable={true}>
+        <Table
+          className="table"
+          id="table"
+          sortable={true}
+          defaultSort={{ column: "date", direction: "desc" }}
+        >
           <Thead id="thead-container">
             <Th column="date" className="is-vcentered">
               <strong className="date-header is-vcentered">Date</strong>
@@ -65,27 +70,28 @@ class BudgetApp extends React.Component {
             </Th>
             <Th column="category" className="is-vcentered">
               <strong className="category-header">
-              <div
-                className="select is-info"
-                id="category-header"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <select
-                  required
-                  name="category"
-                  onChange={this.handleChange}
-                  className="has-text-weight-bold"
+                <div
+                  className="select is-info"
+                  id="category-header"
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  <option value="Category">Category</option>
-                  <option value="Entertainment">Entertainment</option>
-                  <option value="Food">Food</option>
-                  <option value="Charity">Charity</option>
-                  <option value="Travel">Travel</option>
-                  <option value="Work">Work</option>
-                  <option value="Subscriptions">Subscriptions</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
+                  <select
+                    required
+                    name="category"
+                    onChange={this.handleChange}
+                    className="has-text-weight-bold"
+                    value={this.props.expenses.currentCategory}
+                  >
+                    <option value="Category">Category</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Food">Food</option>
+                    <option value="Charity">Charity</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Work">Work</option>
+                    <option value="Subscriptions">Subscriptions</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
               </strong>
             </Th>
             <Th column="cost" className="is-vcentered">

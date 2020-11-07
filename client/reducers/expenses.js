@@ -53,6 +53,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         filteredExpenses: result,
+        currentCategory: action.category,
       };
     default:
       return state;
