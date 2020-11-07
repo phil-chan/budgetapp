@@ -12,7 +12,7 @@ import { checkAuth } from "../actions/auth";
 
 export class App extends React.Component {
   componentDidMount() {
-    const confirmSuccess = () => { };
+    const confirmSuccess = () => {};
     this.props.dispatch(checkAuth(confirmSuccess));
   }
 
@@ -29,12 +29,12 @@ export class App extends React.Component {
                     <h1 className="title is-2">Budget App</h1>
                   </Link>
                 ) : (
-                    <>
-                      <Link to="/budgetapp">
-                        <h1 className="title is-2">Budget App</h1>
-                      </Link>
-                    </>
-                  )}
+                  <>
+                    <Link to="/budgetapp">
+                      <h1 className="title is-2">Budget App</h1>
+                    </Link>
+                  </>
+                )}
                 <Route path="/" component={Nav} />
               </div>
             </div>
@@ -47,19 +47,17 @@ export class App extends React.Component {
                   <Route exact path="/register" component={Register} />
                 </>
               ) : (
-                  <>
-                    <Route exact path="/" component={BudgetApp} />
-                    <Route exact path="/login" component={Login} />
-                    <Route exact path="/register" component={Register} />
-                    <Route exact path="/add" component={Add} />
-                    <Route exact path="/budgetapp" component={BudgetApp} />
-                    <Route exact path="/edit" component={Edit} />
-                  </>
-                )}
+                <>
+                  <Route exact path="/" component={BudgetApp} />
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/register" component={Register} />
+                  <Route exact path="/add" component={Add} />
+                  <Route exact path="/budgetapp" component={BudgetApp} />
+                  <Route exact path="/edit" component={Edit} />
+                </>
+              )}
             </>
-
           </div>
-
         </Router>
       </>
     );

@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 // Import a Google Font
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 
 // Import custom variables and Bulma overides
 @import "./variables.scss";
@@ -18,6 +18,83 @@
 @import "bulma/sass/layout/section.sass";
 
 // Fix for transparent background on active nav items
-a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, .navbar-link.is-active {
+a.navbar-item:focus,
+a.navbar-item:focus-within,
+a.navbar-item:hover,
+a.navbar-item.is-active,
+.navbar-link:focus,
+.navbar-link:focus-within,
+.navbar-link:hover,
+.navbar-link.is-active {
   background-color: inherit;
+}
+
+.reactable-header-sort-asc {
+  background-color: rgb(240, 240, 240);
+  &:before {
+    content: "▼";
+    float: right;
+  }
+}
+
+.reactable-header-sort-desc {
+  background-color: rgb(240, 240, 240);
+  &:before {
+    content: "▲";
+    float: right;
+  }
+}
+
+#edit-header,
+#delete-header {
+  pointer-events: none;
+}
+
+#table {
+  width: 100%;
+}
+
+.reactable-column-header {
+  outline: none;
+  vertical-align: baseline;
+}
+
+.reactable-column-header > *:hover {
+  cursor: pointer;
+  font-weight: 900;
+  text-decoration: underline;
+}
+
+.reactable-column-header > *:focus {
+  outline: 0;
+}
+
+#trash-icon {
+  background-color: lightpink;
+}
+
+#edit-icon {
+  background-color: rgb(211, 222, 235);
+}
+
+#edit-icon:hover {
+  background-color: rgb(165, 191, 224);
+  cursor: pointer;
+}
+
+#trash-icon:hover {
+  background-color: lightcoral;
+  cursor: pointer;
+}
+
+#trash-icon *:hover {
+  opacity: 0.6;
+}
+#edit-icon *:hover {
+  opacity: 0.6;
+}
+
+td {
+  word-wrap: break-word;
+  max-width: 200px;
 }

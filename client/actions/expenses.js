@@ -9,26 +9,33 @@ export function getExpenseToEdit(expenseData, status) {
   return {
     type: "RECIEVE_EXPENSE_TO_EDIT",
     expenseData,
-    status
+    status,
   };
 }
 
-export function toggleEdit(editingStatus){
-    return{
-        type: "TOGGLE_EDIT",
-        editingStatus
-    }
+export function toggleEdit(editingStatus) {
+  return {
+    type: "TOGGLE_EDIT",
+    editingStatus,
+  };
 }
 
-export function deleteExpense(expenseId){
-    return{
-        type: "DELETE_EXPENSE",
-        expenseId
-    }
+export function deleteExpense(expenseId) {
+  return {
+    type: "DELETE_EXPENSE",
+    expenseId,
+  };
 }
 
-export function updateTotalCost(){
-  return{
-    type: "UPDATE_TOTAL_COST"
-  }
+export function updateTotalCost() {
+  return {
+    type: "UPDATE_TOTAL_COST",
+  };
+}
+
+export function updateCurrentCategory(category) {
+  return {
+    type: "UPDATE_CURRENT_CATEGORY",
+    category,
+  };
 }

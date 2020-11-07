@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logoutUser } from "../actions/auth";
 
+import { updateCurrentCategory } from "../actions/expenses";
+
 class Nav extends React.Component {
   state = {
     showBurger: false,
@@ -15,7 +17,7 @@ class Nav extends React.Component {
   };
 
   render() {
-    const { auth, logout } = this.props;
+    const { auth, logout, updateCategory } = this.props;
     const { showBurger } = this.state;
     return (
       <nav className="navbar">
@@ -28,15 +30,14 @@ class Nav extends React.Component {
             )}
             <span
               onClick={this.toggleBurger}
-              className={`navbar-burger burger ${showBurger ? "is-active" : ""
-                }`}
+              className={`navbar-burger burger ${
+                showBurger ? "is-active" : ""
+              }`}
               data-target="navbarMenuHeroA"
             >
-              {/* THESE THREE SPANS ARE FOR HAMBURGER BAR LINES */}
               <span></span>
               <span></span>
               <span></span>
-              {/* THESE THREE SPANS ARE FOR HAMBURGER BAR LINES */}
             </span>
           </div>
           <div
@@ -46,11 +47,15 @@ class Nav extends React.Component {
             <div className="navbar-end">
               {auth.isAuthenticated ? (
                 <>
-                  <Link to="/budgetapp" className="navbar-item is-large">
+                  <Link
+                    to="/budgetapp"
+                    className="navbar-item is-large"
+                    onClick={() => updateCategory("Category")}
+                  >
                     My Spendings
                   </Link>
                   <Link to="/add" className="navbar-item is-large">
-                    Add New Expenditure
+                    Add New Expense
                   </Link>
                   <Link
                     to="/"
@@ -61,23 +66,23 @@ class Nav extends React.Component {
                   </Link>
                 </>
               ) : (
-                  <>
-                    <Link
-                      onClick={this.toggleBurger}
-                      className="navbar-item is-large"
-                      to="/login"
-                    >
-                      Login
+                <>
+                  <Link
+                    onClick={this.toggleBurger}
+                    className="navbar-item is-large"
+                    to="/login"
+                  >
+                    Login
                   </Link>
-                    <Link
-                      onClick={this.toggleBurger}
-                      className="navbar-item"
-                      to="/register"
-                    >
-                      Register
+                  <Link
+                    onClick={this.toggleBurger}
+                    className="navbar-item"
+                    to="/register"
+                  >
+                    Register
                   </Link>
-                  </>
-                )}
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -91,6 +96,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     logout: () => {
       const confirmSuccess = () => ownProps.history.push("/");
       dispatch(logoutUser(confirmSuccess));
+    },
+    updateCategory: (category) => {
+      dispatch(updateCurrentCategory(category));
     },
   };
 };
