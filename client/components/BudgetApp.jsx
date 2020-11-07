@@ -63,16 +63,16 @@ class BudgetApp extends React.Component {
           ]}
         >
           <Thead id="thead-container">
-            <Th column="date">
-              <strong className="date-header">Date</strong>
+            <Th column="date" className="is-vcentered">
+              <strong className="date-header is-vcentered">Date</strong>
             </Th>
-            <Th column="expense">
+            <Th column="expense" className="is-vcentered">
               <strong className="expense-header">Expense</strong>
             </Th>
-            <Th column="description">
+            <Th column="description" className="is-vcentered">
               <strong className="description-header">Description</strong>
             </Th>
-            <Th column="category">
+            <Th column="category" className="is-vcentered">
               <strong className="category-header">
                 <div className="select is-info">
                   <select
@@ -93,13 +93,13 @@ class BudgetApp extends React.Component {
                 </div>
               </strong>
             </Th>
-            <Th column="cost">
+            <Th column="cost" className="is-vcentered">
               <strong className="cost-header">Cost</strong>
             </Th>
-            <Th column="edit">
+            <Th column="edit" className="is-vcentered">
               <strong className="edit-header">Edit</strong>
             </Th>
-            <Th column="delete">
+            <Th column="delete" className="is-vcentered">
               <strong className="delete-header">Delete</strong>
             </Th>
           </Thead>

@@ -35,11 +35,12 @@ a.navbar-item.is-active,
 
 .reactable-column-header {
   outline: none;
+  vertical-align: baseline;
 }
 
 .reactable-column-header > *:hover {
   cursor: pointer;
-  background-color: lightgrey;
+  background-color: rgb(235, 235, 235);
 }
 
 .reactable-column-header > *:focus {
