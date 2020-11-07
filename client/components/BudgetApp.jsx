@@ -1,4 +1,5 @@
 import React from "react";
+import Reactable from "reactable-copy";
 import { connect } from "react-redux";
 import { apiGetExpenses, apiDelExpense } from "../apis/index";
 import {
@@ -9,6 +10,13 @@ import {
   updateTotalCost,
   updateCurrentCategory,
 } from "../actions/expenses";
+
+const Table = Reactable.Table,
+  Tr = Reactable.Tr,
+  Td = Reactable.Td,
+  Th = Reactable.Th,
+  Thead = Reactable.Thead,
+  Tfoot = Reactable.Tfoot;
 
 class BudgetApp extends React.Component {
   state = {};
@@ -44,88 +52,114 @@ class BudgetApp extends React.Component {
   render() {
     return (
       <div className="table-container">
-        <table className="table is-narrow is-hoverable is-fullwidth">
-          <thead>
-            <tr>
-              <th className="is-vcentered">Date</th>
-              <th className="is-vcentered">Expense</th>
-              <th className="is-vcentered">Description</th>
-              <th className="is-vcentered">
-                <div className="field">
-                  <div className="control">
-                    <div className="select is-info">
-                      <select
-                        required
-                        name="category"
-                        onChange={this.handleChange}
-                        className="has-text-weight-bold"
-                      >
-                        <option value="Category">Category</option>
-                        <option value="Entertainment">Entertainment</option>
-                        <option value="Food">Food</option>
-                        <option value="Charity">Charity</option>
-                        <option value="Travel">Travel</option>
-                        <option value="Work">Work</option>
-                        <option value="Subscriptions">Subscriptions</option>
-                        <option value="Other">Other</option>
-                      </select>
-                    </div>
-                  </div>
+        <Table
+          className="table"
+          id="table"
+          sortable={[
+            { column: "expense", direction: "desc" },
+            { column: "description", direction: "desc" },
+            { column: "date", direction: "Date" },
+            { column: "cost", direction: "Currency" },
+          ]}
+        >
+          <Thead id="thead-container">
+            <Th column="date" className="is-vcentered">
+              <strong className="date-header is-vcentered">Date</strong>
+            </Th>
+            <Th column="expense" className="is-vcentered">
+              <strong className="expense-header">Expense</strong>
+            </Th>
+            <Th column="description" className="is-vcentered">
+              <strong className="description-header">Description</strong>
+            </Th>
+            <Th column="category" className="is-vcentered">
+              <strong className="category-header">
+                <div className="select is-info">
+                  <select
+                    required
+                    name="category"
+                    onChange={this.handleChange}
+                    className="has-text-weight-bold"
+                  >
+                    <option value="Category">Category</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Food">Food</option>
+                    <option value="Charity">Charity</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Work">Work</option>
+                    <option value="Subscriptions">Subscriptions</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </div>
-              </th>
-              <th className="is-vcentered">Cost</th>
-              <th className="has-text-centered is-vcentered">Edit</th>
-              <th className="has-text-centered is-vcentered">Delete</th>
-            </tr>
-          </thead>
-          <tfoot>
-            <tr>
-              <th>Totals</th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th>
-                ${Number(this.props.expenses.totalExpenditure).toFixed(2)}
-              </th>
-              <th></th>
-              <th></th>
-            </tr>
-          </tfoot>
+              </strong>
+            </Th>
+            <Th column="cost" className="is-vcentered">
+              <strong className="cost-header">Cost</strong>
+            </Th>
+            <Th column="edit" className="is-vcentered">
+              <strong className="edit-header">Edit</strong>
+            </Th>
+            <Th column="delete" className="is-vcentered">
+              <strong className="delete-header">Delete</strong>
+            </Th>
+          </Thead>
 
           {this.props.expenses.filteredExpenses.map((expense, idx) => {
             return (
-              <tbody key={idx}>
-                <tr>
-                  <th>{new Date(expense.date).toDateString()}</th>
-                  <td>{expense.expense_name}</td>
-                  <td>{expense.expense_description}</td>
-                  <td>{expense.category}</td>
-                  <td>${Number(expense.cost).toFixed(2)}</td>
+              <Tr key={idx}>
+                <Th column="date" value={new Date(expense.date).toDateString()}>
+                  {new Date(expense.date).toDateString()}
+                </Th>
+                <Td column="expense" value={expense.expense_name}>
+                  {expense.expense_name}
+                </Td>
+                <Td column="description" value={expense.expense_description}>
+                  {expense.expense_description}
+                </Td>
+                <Td column="category" value={expense.category}>
+                  {expense.category}
+                </Td>
+                <Td column="cost" value={Number(expense.cost)}>
+                  {`$${Number(expense.cost).toFixed(2)}`}
+                </Td>
+                <Td
+                  column="edit"
+                  className="has-text-centered is-vcentered"
+                  id="edit-icon"
+                  onClick={() => {
+                    this.editExpense(expense);
+                  }}
+                >
+                  <i className="fas fa-edit"></i>
+                </Td>
 
-                  <td
-                    className="has-text-centered is-vcentered"
-                    id="edit-icon"
-                    onClick={() => {
-                      this.editExpense(expense);
-                    }}
-                  >
-                    <i className="fas fa-edit"></i>
-                  </td>
-
-                  <td
-                    className="has-text-centered is-vcentered"
-                    id="trash-icon"
-                    onClick={() => {
-                      this.delExpense(expense.id);
-                    }}
-                  >
-                    <i className="fas fa-trash-alt"></i>
-                  </td>
-                </tr>
-              </tbody>
+                <Td
+                  column="delete"
+                  className="has-text-centered is-vcentered"
+                  id="trash-icon"
+                  onClick={() => {
+                    this.delExpense(expense.id);
+                  }}
+                >
+                  <i className="fas fa-trash-alt"></i>
+                </Td>
+              </Tr>
             );
           })}
-        </table>
+          <Tfoot>
+            <Td>
+              <strong className="totalsLabel-footer">Totals</strong>
+            </Td>
+            <Td></Td>
+            <Td></Td>
+            <Td></Td>
+            <Td>
+              <strong className="totalCosts-footer">
+                ${Number(this.props.expenses.totalExpenditure).toFixed(2)}
+              </strong>
+            </Td>
+          </Tfoot>
+        </Table>
       </div>
     );
   }

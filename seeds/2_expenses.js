@@ -11,7 +11,7 @@ exports.seed = function (knex) {
           expense_description: "Chicken and friends",
           category: "Food",
           cost: 42.0,
-          date: new Date(),
+          date: Date.parse("01 Jan 2020"),
           user_id: 1,
         },
         {
@@ -20,7 +20,7 @@ exports.seed = function (knex) {
           expense_description: "Concert ticket",
           category: "Entertainment",
           cost: 420,
-          date: new Date(),
+          date: Date.parse("02 Feb 2020"),
           user_id: 1,
         },
         {
@@ -29,7 +29,7 @@ exports.seed = function (knex) {
           expense_description: "Filling up car",
           category: "Travel",
           cost: 69.0,
-          date: new Date(),
+          date: Date.parse("03 Mar 2020"),
           user_id: 1,
         },
       ]);

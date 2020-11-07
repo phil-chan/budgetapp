@@ -53,8 +53,8 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "bulma": "^0.9.1",
     "authenticare": "^0.4.7",
+    "bulma": "^0.9.1",
     "css-loader": "^3.6.0",
     "dotenv": "^8.2.0",
     "dotenv-webpack": "^1.8.0",
@@ -69,6 +69,7 @@
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
+    "reactable-copy": "^0.14.4",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "sass-loader": "^9.0.3",

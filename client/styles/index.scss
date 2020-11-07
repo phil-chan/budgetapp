@@ -29,6 +29,25 @@ a.navbar-item.is-active,
   background-color: inherit;
 }
 
+#table {
+  width: 100%;
+}
+
+.reactable-column-header {
+  outline: none;
+  vertical-align: baseline;
+}
+
+.reactable-column-header > *:hover {
+  cursor: pointer;
+  background-color: rgb(235, 235, 235);
+}
+
+.reactable-column-header > *:focus {
+  outline: 0;
+  background-color: rgb(230, 230, 230);
+}
+
 #trash-icon {
   background-color: lightpink;
 }
