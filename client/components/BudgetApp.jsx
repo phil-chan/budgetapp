@@ -52,17 +52,7 @@ class BudgetApp extends React.Component {
   render() {
     return (
       <div className="table-container">
-        <Table
-          className="table"
-          id="table"
-          sortable={[
-            { column: "expense", direction: "desc" },
-            { column: "description", direction: "desc" },
-            { column: "date", direction: "Date" },
-            { column: "cost", sortFunction: Currency(1, 2) },
-            { column: "category", direction: "desc" },
-          ]}
-        >
+        <Table className="table" id="table" sortable={true}>
           <Thead id="thead-container">
             <Th column="date" className="is-vcentered">
               <strong className="date-header is-vcentered">Date</strong>
@@ -108,7 +98,7 @@ class BudgetApp extends React.Component {
           {this.props.expenses.filteredExpenses.map((expense, idx) => {
             return (
               <Tr key={idx}>
-                <Th column="date" value={new Date(expense.date).toDateString()}>
+                <Th column="date" value={expense.date}>
                   {new Date(expense.date).toDateString()}
                 </Th>
                 <Td column="expense" value={expense.expense_name}>
