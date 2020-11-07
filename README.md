@@ -1,14 +1,14 @@
 # budget app
 
+#### heroku:
+- http://the-budgetapp.herokuapp.com/
+
 #### running it locally (use master branch):
-0. you'll need an .env file for jwt to work..
+0. you'll need an .env file for jwt to work
 1. npm i
 2. npm run dev
 3. http://localhost:3000/
 4. register as a user (via the nav bar)
-
-#### heroku:
-- http://the-budgetapp.herokuapp.com/ (not currently working after login page)
 
 ### What is it?
 It lets you record your spending and gives you a summary based on category of spending
