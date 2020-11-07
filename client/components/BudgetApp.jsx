@@ -51,7 +51,7 @@ class BudgetApp extends React.Component {
 
   render() {
     return (
-      <>
+      <div className="table-container">
         <Table
           className="table"
           id="table"
@@ -160,7 +160,7 @@ class BudgetApp extends React.Component {
             </Td>
           </Tfoot>
         </Table>
-      </>
+      </div>
     );
   }
 }
