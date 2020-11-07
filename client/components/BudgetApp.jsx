@@ -60,6 +60,7 @@ class BudgetApp extends React.Component {
             { column: "description", direction: "desc" },
             { column: "date", direction: "Date" },
             { column: "cost", direction: "Currency" },
+            { column: "category", direction: "desc" },
           ]}
         >
           <Thead id="thead-container">
