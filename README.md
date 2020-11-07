@@ -1,6 +1,7 @@
 # budget app
 
 #### running it locally (use master branch):
+0. you'll have to ask me for an .env file for the jwt secret
 1. npm i
 2. npm run dev
 3. http://localhost:3000/
