@@ -55,9 +55,14 @@ class BudgetApp extends React.Component {
         <Table
           className="table"
           id="table"
-          sortable={[{ column: "expense", direction: "asc" }]}
+          sortable={[
+            { column: "expense", direction: "desc" },
+            { column: "description", direction: "desc" },
+            { column: "date", direction: "Date" },
+            { column: "cost", direction: "Currency" },
+          ]}
         >
-          <Thead>
+          <Thead id="thead-container">
             <Th column="date">
               <strong className="date-header">Date</strong>
             </Th>
@@ -102,11 +107,21 @@ class BudgetApp extends React.Component {
           {this.props.expenses.filteredExpenses.map((expense, idx) => {
             return (
               <Tr key={idx}>
-                <Th column="date">{new Date(expense.date).toDateString()}</Th>
-                <Td column="expense">{expense.expense_name}</Td>
-                <Td column="description">{expense.expense_description}</Td>
-                <Td column="category">{expense.category}</Td>
-                <Td column="cost">{Number(expense.cost).toFixed(2)}</Td>
+                <Th column="date" value={new Date(expense.date).toDateString()}>
+                  {new Date(expense.date).toDateString()}
+                </Th>
+                <Td column="expense" value={expense.expense_name}>
+                  {expense.expense_name}
+                </Td>
+                <Td column="description" value={expense.expense_description}>
+                  {expense.expense_description}
+                </Td>
+                <Td column="category" value={expense.category}>
+                  {expense.category}
+                </Td>
+                <Td column="cost" value={Number(expense.cost)}>
+                  {`$${Number(expense.cost).toFixed(2)}`}
+                </Td>
                 <Td
                   column="edit"
                   className="has-text-centered is-vcentered"
