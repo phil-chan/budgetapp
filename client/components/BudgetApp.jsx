@@ -65,23 +65,27 @@ class BudgetApp extends React.Component {
             </Th>
             <Th column="category" className="is-vcentered">
               <strong className="category-header">
-                <div className="select is-info">
-                  <select
-                    required
-                    name="category"
-                    onChange={this.handleChange}
-                    className="has-text-weight-bold"
-                  >
-                    <option value="Category">Category</option>
-                    <option value="Entertainment">Entertainment</option>
-                    <option value="Food">Food</option>
-                    <option value="Charity">Charity</option>
-                    <option value="Travel">Travel</option>
-                    <option value="Work">Work</option>
-                    <option value="Subscriptions">Subscriptions</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
+              <div
+                className="select is-info"
+                id="category-header"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <select
+                  required
+                  name="category"
+                  onChange={this.handleChange}
+                  className="has-text-weight-bold"
+                >
+                  <option value="Category">Category</option>
+                  <option value="Entertainment">Entertainment</option>
+                  <option value="Food">Food</option>
+                  <option value="Charity">Charity</option>
+                  <option value="Travel">Travel</option>
+                  <option value="Work">Work</option>
+                  <option value="Subscriptions">Subscriptions</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
               </strong>
             </Th>
             <Th column="cost" className="is-vcentered">
