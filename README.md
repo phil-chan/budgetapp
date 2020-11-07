@@ -1,6 +1,7 @@
 # budget app
 
 ## heroku link: http://the-budgetapp.herokuapp.com/
+- register as a user first
 
 #### running it locally (use master branch):
 0. you'll need an .env file for jwt to work
